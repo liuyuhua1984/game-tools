@@ -24,7 +24,7 @@ public class Reader {
     public static String RES = "/res/";
     public static void main(String arg[]) {
         String userPath = System.getProperty("user.dir");
-        String filePath = "server-admin.2018-10-12.0.log";
+        String filePath = "download-serve.log";
 
         try {
             FileInputStream fis = new FileInputStream(userPath+RES+filePath);
@@ -34,9 +34,10 @@ public class Reader {
              BufferedReader br =new BufferedReader(new InputStreamReader(bout, "utf-8"));
             FileWriter fw = new FileWriter(userPath+RES+"td.log");
             String data = null;
-            List<String> list = new ArrayList<>();
+            List<String> list = new ArrayList<String>();
             while ((data = br.readLine()) != null) {
-               if (data.contains("888053")){
+               if (data.contains("106.47.237.42") || data.contains("42.90.114.98") || data.contains("49.95.108.117") || data.contains("222.217.218.183")
+                       ||data.contains("125.95.97.147") ||data.contains("117.176.57.224") || data.contains("888025")  ){
                    //list.add(data);
                    fw.write(data);
                    fw.write("\r\n");

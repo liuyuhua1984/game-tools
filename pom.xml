@@ -6,14 +6,18 @@
 
     <groupId>com.lyh.tools</groupId>
     <artifactId>game-tools</artifactId>
+    <packaging>pom</packaging>
     <version>1.0.0</version>
+    <modules>
+        <module>encrypt-file-imgs</module>
+    </modules>
 
-    <dependencies>
+<!--    <dependencies>-->
 
-        <dependency>
-            <groupId>com.lyh.chess</groupId>
-            <artifactId>common-lib</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-    </dependencies>
+<!--        <dependency>-->
+<!--            <groupId>com.lyh.chess</groupId>-->
+<!--            <artifactId>common-lib</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
+<!--    </dependencies>-->
 </project>

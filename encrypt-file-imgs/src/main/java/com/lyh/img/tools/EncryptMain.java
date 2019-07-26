@@ -116,7 +116,7 @@ public class EncryptMain {
                         encryptFile(file2, distFolder,srcPath, key);
                     } else {
                         //处理
-                        if (!(file2.getName().endsWith(".png") || file2.getName().endsWith(".jpg")) ){
+                        if (!(file2.getName().endsWith(".png") || file2.getName().endsWith(".jpg") || file2.getName().endsWith(".jpeg")) ){
                             continue;
                         }
                         String distPath = file2.getPath().replace(srcPath, distFolder.getName());

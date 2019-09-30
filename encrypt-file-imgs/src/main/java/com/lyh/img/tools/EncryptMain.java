@@ -116,7 +116,7 @@ public class EncryptMain {
                         encryptFile(file2, distFolder,srcPath, key);
                     } else {
                         //处理
-                        if (!(file2.getName().endsWith(".png") || file2.getName().endsWith(".jpg") || file2.getName().endsWith(".jpeg")) ){
+                        if (!(file2.getName().endsWith(".png") || file2.getName().endsWith(".jpg") || file2.getName().endsWith(".jpeg") || file2.getName().endsWith(".gif")) ){
                             continue;
                         }
                         String distPath = file2.getPath().replace(srcPath, distFolder.getName());
@@ -140,11 +140,18 @@ public class EncryptMain {
 
                             int index = 0;
                             byte data[] = byteArrayOutputStream.toByteArray();
+
+//                            StringBuilder sb = new StringBuilder();
+//                            for (byte d : data){
+//                                sb.append(d);
+//                                sb.append(",");
+//                            }
+//                            logger.error("原值是::"+sb.toString());
                             for (int i = 0; i < 100; i++) {
                                 if (i >= data.length) {
                                     break;
                                 }
-                                data[i] = (byte) (data[i] ^ key);
+                                data[i] =  (byte)((data[i] ^ key));
                             }
 
                             //                             ByteArrayInputStream bais = new ByteArrayInputStream(fis);
@@ -153,6 +160,11 @@ public class EncryptMain {
                             if(!distFile.getParentFile().exists()){
                                 distFile.getParentFile().mkdirs();
                             }
+//                             sb = new StringBuilder();
+//                            for (byte d : data){
+//                                sb.append(d);
+//                            }
+//                            logger.error("解出来的值是::"+sb.toString());
                             fileOutputStream = new FileOutputStream(distPathName);
                             fileOutputStream.write(data);
 

@@ -91,7 +91,7 @@ public class MainGameKey {
 
             fileOutputStream.flush();
             fileOutputStream.close();
-
+            System.err.println("已完成");
         }catch (Exception e){
             e.printStackTrace();
             System.exit(0);

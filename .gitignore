@@ -4,3 +4,5 @@
 /encrypt-file-imgs/target
 /encrypt-file-imgs/dist
 /.idea
+/*.iml
+/encrypt-file-imgs/encrypt-file-imgs.iml

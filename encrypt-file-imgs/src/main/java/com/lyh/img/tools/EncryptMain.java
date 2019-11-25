@@ -120,7 +120,7 @@ public class EncryptMain {
                             continue;
                         }
                         String distPath = file2.getPath().replace(srcPath, distFolder.getName());
-                        String distPathName = distPath.substring(0,distPath.indexOf(".")+1)+"x";
+                        String distPathName = distPath.substring(0,distPath.indexOf(".")+1)+"ceb";
 
                         ByteArrayOutputStream byteArrayOutputStream = null;
                         FileInputStream fis = null;

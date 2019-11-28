@@ -33,6 +33,7 @@ public class MainGameKey {
                 filePath = arg[1];
             }
 
+
             Properties properties = GameProperties.loadGameProperties(userPath+RES+filePath);
 
             String key = properties.getProperty("key");

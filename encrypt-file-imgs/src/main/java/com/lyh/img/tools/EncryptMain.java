@@ -226,7 +226,7 @@ public class EncryptMain {
                         decodeFile(file2, distFolder,srcPath, key);
                     } else {
                         //处理
-                        if (!(file2.getName().endsWith(".x")) ){
+                        if (!(file2.getName().endsWith(".x") || file2.getName().endsWith(".ceb")) ){
                             continue;
                         }
 

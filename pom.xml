@@ -22,6 +22,8 @@
     </build>
     <modules>
         <module>encrypt-file-imgs</module>
+        <module>oss-txt</module>
+
     </modules>
 
 <!--    <dependencies>-->

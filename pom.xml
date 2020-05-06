@@ -23,6 +23,8 @@
     <modules>
         <module>encrypt-file-imgs</module>
         <module>oss-txt</module>
+        <module>ts-merge-tool</module>
+        <module>ts-key-tools</module>
 
     </modules>
 

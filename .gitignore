@@ -13,3 +13,8 @@
 /encrypt-file-imgs/dist
 /oss-txt/target
 /oss_log
+/ts-key-tools/target
+/ts-merge-tool/target
+/ts-key-tools/g_dist
+/key_log
+/oss-txt/g_dist

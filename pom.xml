@@ -27,13 +27,17 @@
         <module>ts-key-tools</module>
 
     </modules>
+    <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <lombok.version>1.18.12</lombok.version>
+    </properties>
+    <dependencies>
 
-<!--    <dependencies>-->
-
-<!--        <dependency>-->
-<!--            <groupId>com.lyh.chess</groupId>-->
-<!--            <artifactId>common-lib</artifactId>-->
-<!--            <version>1.0.0</version>-->
-<!--        </dependency>-->
-<!--    </dependencies>-->
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+    </dependencies>
 </project>

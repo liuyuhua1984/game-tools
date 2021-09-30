@@ -25,6 +25,7 @@
         <module>oss-txt</module>
         <module>ts-merge-tool</module>
         <module>ts-key-tools</module>
+        <module>domain-convert</module>
 
     </modules>
     <properties>

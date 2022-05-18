@@ -19,3 +19,5 @@
 /key_log
 /oss-txt/g_dist
 /domain-convert/target
+/nginx_log
+/read-nginx/target

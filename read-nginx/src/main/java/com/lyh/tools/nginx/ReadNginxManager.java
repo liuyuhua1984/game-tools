@@ -18,12 +18,12 @@ public class ReadNginxManager {
     private final static Logger logger = LoggerFactory.getLogger(ReadNginxManager.class);
 
 
-    public static void  readNginx(String nginxFile){
+    public static void readNginx(String nginxFile) {
 
         File file2 = new File(nginxFile);
-        if (!file2.exists()){
+        if (!file2.exists()) {
 
-            logger.error("没有nginx文件"+nginxFile);
+            logger.error("没有nginx文件" + nginxFile);
             return;
         }
         FileInputStream fis = null;
@@ -38,54 +38,71 @@ public class ReadNginxManager {
             br = new BufferedReader(new InputStreamReader(bout, "utf-8"));
             String line = null;
             while ((line = br.readLine()) != null) {
-                String[] sTemp = new String [2];
-               String sp[] = line.split(" ");
-                if (sp.length > 1){
+                String[] sTemp = new String[2];
+                String sp[] = line.split(" ");
+                if (sp.length > 1) {
                     int i = 0;
-                    for (String t : sp){
-                        if (t.length() > 0){
+                    for (String t : sp) {
+                        if (t.length() > 0) {
                             sTemp[i++] = t;
                         }
 
-                        if (i >= sTemp.length){
+                        if (i >= sTemp.length) {
                             break;
                         }
                     }
                 }
 
-                if (sTemp.length > 0){
-                   String st[] =  sTemp[0].split("\\.");
-                   String tm[] = sTemp[1].split("\\:");
+                if (sTemp.length > 0) {
+                    String st[] = sTemp[0].split("\\.");
+                    String tm[] = sTemp[1].split("\\:");
                     String nString = "";
-                   if (tm.length < 2) {
+                    if (tm.length < 2) {
                         nString = st[0] + "-" + sTemp[1] + "." + st[1] + ".rpm";
-                   }else{
-                       nString = st[0] + "-" + tm[1] + "." + st[1] + ".rpm";
-                   }
-                   String downloadUrl = ServerGameConfig.DOWN_URL + nString;
-                    boolean keyBret = HttpUtils.downloadFile(downloadUrl, ServerGameConfig.SAVE_PATH +nString, 1500000);
-                    if (!keyBret){
+                    } else {
+                        nString = st[0] + "-" + tm[1] + "." + st[1] + ".rpm";
+                    }
+                    String downloadUrl = ServerGameConfig.DOWN_URL + nString;
+                    boolean keyBret = HttpUtils.downloadFile(downloadUrl, ServerGameConfig.SAVE_PATH + nString, 1500000);
+                    if (!keyBret) {
                         downloadUrl = ServerGameConfig.UPDATE_URL + nString;
-                        keyBret = HttpUtils.downloadFile(downloadUrl, ServerGameConfig.SAVE_PATH +nString, 1500000);
+                        keyBret = HttpUtils.downloadFile(downloadUrl, ServerGameConfig.SAVE_PATH + nString, 1500000);
                         if (!keyBret) {
 
                             downloadUrl = ServerGameConfig.DOWNF_URL + nString;
-                            keyBret = HttpUtils.downloadFile(downloadUrl, ServerGameConfig.SAVE_PATH +nString, 1500000);
+                            keyBret = HttpUtils.downloadFile(downloadUrl, ServerGameConfig.SAVE_PATH + nString, 1500000);
                             if (!keyBret) {
                                 logger.error("下载文件没有完成=" + nString);
                             }
+
+
                         }
+
+                    }
+
+
+                    if (!(nString.contains("NetworkManager")
+                            || nString.contains("kernel-3")
+                            || nString.contains("kernel-tools")
+//                    || nString.contains("glibc-headers")
+//                    || nString.contains("glibc-devel")
+                    )) {
+
+                        sb.append("rpm -Uvh ");
+                        sb.append(nString);
+                       //  sb.append(nString + " \\");
+                        sb.append("\r\n");
+                       // sb.delete(sb.length() - "\\".length(), sb.length());
+                       // sb.delete(sb.length() - "\r\n".length(), sb.length());
                     }
                 }
-              //  line = line.replace(ServerGameConfig.DOMAIN_SRC, ServerGameConfig.DOMAIN_DIST);
-                sb.append(line);
-                sb.append("\r\n");
+                //  line = line.replace(ServerGameConfig.DOMAIN_SRC, ServerGameConfig.DOMAIN_DIST);
+
             }
 
 
-            sb.delete(sb.length() - "\r\n".length(), sb.length());
 
-            BufferedWriter fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file2, false), "UTF-8"));
+            BufferedWriter fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(ServerGameConfig.SAVE_PATH + "rpm.txt", false), "UTF-8"));
 
             //  FileWriter fw = new FileWriter(file, true);
             String st = sb.toString();
